@@ -8,9 +8,9 @@ struct node
 
 void main()
 {
-	struct node *insert_first(struct node * node_to_be_inserted,struct node * head);
-	void insert_end(struct node * node_to_be_inserted,struct node * head);
-	void insert_at_n(struct node * node_to_be_inserted,struct node * head);
+	struct node *insert_first(struct node *node_to_be_inserted,struct node * head);
+	void insert_end(struct node *node_to_be_inserted, struct node *head);
+	void insert_after_n(struct node *node_to_be_inserted, struct node *head);
 
 	struct node *del_first(struct node * node_to_be_deleted, struct node * head);
 	void display(struct node * head);
@@ -20,8 +20,8 @@ void main()
 	n=insert_first(p,n);
 	n=insert_first(p,n);
 	n=insert_first(p,n);
-	n=insert_end(p);
-	n=insert_at_n(p);
+	insert_end(p,n);
+	insert_after_n(p,n);
 	for(int i=0;i<6;i++,n=n->next)
 		printf("%d\n",n->data);
 }
@@ -43,7 +43,7 @@ struct node *insert_first(struct node *p, struct node *head)
 	return p;
 }
 
-void insert_end(struct node *p)
+void insert_end(struct node *p, struct node *head)
 {
 	p=(struct node *)malloc(sizeof(struct node));
 	printf("Enter data for node(end): ");
@@ -56,13 +56,13 @@ void insert_end(struct node *p)
 
 }
 
-void insert_at_n(struct node *p, struct node *head)
+void insert_after_n(struct node * p, struct node *head)
 {
 	p=(struct node *)malloc(sizeof(struct node));
 	int n;
-	printf("Enter  data for node(At n):-\n Enter n: ");
+	printf("Enter n: ");
 	scanf("%d",&n);
-	printf("Enter data for node(At n): ");
+	printf("Enter data for node(After n): ");
 	scanf("%d",&p->data);
 	int j;
 	struct node *i;
