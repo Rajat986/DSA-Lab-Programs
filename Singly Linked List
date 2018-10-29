@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<malloc.h>
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+void main()
+{
+	struct node *insert_first(struct node * node_to_be_inserted,struct node * head);
+	void insert_end(struct node * node_to_be_inserted,struct node * head);
+	void insert_at_n(struct node * node_to_be_inserted,struct node * head);
+
+	struct node *del_first(struct node * node_to_be_deleted, struct node * head);
+	void display(struct node * head);
+
+	struct node *n,*p;
+	n=insert_first(p,NULL);
+	n=insert_first(p,n);
+	n=insert_first(p,n);
+	n=insert_first(p,n);
+	n=insert_end(p);
+	n=insert_at_n(p);
+	for(int i=0;i<6;i++,n=n->next)
+		printf("%d\n",n->data);
+}
+
+struct node *insert_first(struct node *p, struct node *head)
+{
+	p= (struct node *)malloc(sizeof(struct node));
+	printf("Enter data for node(first): ");
+	scanf("%d",&p->data);
+	if(head == NULL)
+	{
+		head = p;
+		p->next=NULL;
+	}
+	else
+	{
+		p->next = head;
+	}
+	return p;
+}
+
+void insert_end(struct node *p)
+{
+	p=(struct node *)malloc(sizeof(struct node));
+	printf("Enter data for node(end): ");
+	scanf("%d",&p->data);
+	struct node *i;
+	for(i=head;i->next != NULL;i=i->next);
+
+	i->next=p;
+	p->next=NULL;
+
+}
+
+void insert_at_n(struct node *p, struct node *head)
+{
+	p=(struct node *)malloc(sizeof(struct node));
+	int n;
+	printf("Enter  data for node(At n):-\n Enter n: ");
+	scanf("%d",&n);
+	printf("Enter data for node(At n): ");
+	scanf("%d",&p->data);
+	int j;
+	struct node *i;
+	for(i=head,j=0;j<n-2 && i->next != NULL;i=i->next,j++);
+	p->next=i->next;
+	i->next=p;
+
+}
+/*
+void del_first(struct node * node_to_be_deleted, struct node * head);
+{
+	
+*/
